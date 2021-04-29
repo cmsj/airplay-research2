@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4FFDB1B02639C64600EE2E34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDB1AF2639C64600EE2E34 /* main.m */; };
+		4FFDB1BE2639EC1B00EE2E34 /* AVFEntitlementHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDB1BD2639EC1B00EE2E34 /* AVFEntitlementHack.m */; };
+		4FFDB1C22639EC5100EE2E34 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDB1C12639EC5100EE2E34 /* fishhook.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,12 @@
 /* Begin PBXFileReference section */
 		4FFDB1AC2639C64600EE2E34 /* airplay-research2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "airplay-research2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFDB1AF2639C64600EE2E34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4FFDB1B92639C70500EE2E34 /* AVFCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFCore.framework; path = ../../../../../System/Library/PrivateFrameworks/AVFCore.framework; sourceTree = "<group>"; };
+		4FFDB1BB2639EB2600EE2E34 /* AVFoundation-Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVFoundation-Private.h"; sourceTree = "<group>"; };
+		4FFDB1BC2639EC1B00EE2E34 /* AVFEntitlementHack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVFEntitlementHack.h; sourceTree = "<group>"; };
+		4FFDB1BD2639EC1B00EE2E34 /* AVFEntitlementHack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVFEntitlementHack.m; sourceTree = "<group>"; };
+		4FFDB1C02639EC5100EE2E34 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		4FFDB1C12639EC5100EE2E34 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			children = (
 				4FFDB1AE2639C64600EE2E34 /* airplay-research2 */,
 				4FFDB1AD2639C64600EE2E34 /* Products */,
+				4FFDB1B82639C70500EE2E34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +66,38 @@
 		4FFDB1AE2639C64600EE2E34 /* airplay-research2 */ = {
 			isa = PBXGroup;
 			children = (
+				4FFDB1BF2639EC4100EE2E34 /* fishhook */,
+				4FFDB1B62639C64E00EE2E34 /* PrivateIncludes */,
 				4FFDB1AF2639C64600EE2E34 /* main.m */,
+				4FFDB1BC2639EC1B00EE2E34 /* AVFEntitlementHack.h */,
+				4FFDB1BD2639EC1B00EE2E34 /* AVFEntitlementHack.m */,
 			);
 			path = "airplay-research2";
+			sourceTree = "<group>";
+		};
+		4FFDB1B62639C64E00EE2E34 /* PrivateIncludes */ = {
+			isa = PBXGroup;
+			children = (
+				4FFDB1BB2639EB2600EE2E34 /* AVFoundation-Private.h */,
+			);
+			path = PrivateIncludes;
+			sourceTree = "<group>";
+		};
+		4FFDB1B82639C70500EE2E34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FFDB1B92639C70500EE2E34 /* AVFCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FFDB1BF2639EC4100EE2E34 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				4FFDB1C12639EC5100EE2E34 /* fishhook.c */,
+				4FFDB1C02639EC5100EE2E34 /* fishhook.h */,
+			);
+			path = fishhook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +156,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFDB1BE2639EC1B00EE2E34 /* AVFEntitlementHack.m in Sources */,
+				4FFDB1C22639EC5100EE2E34 /* fishhook.c in Sources */,
 				4FFDB1B02639C64600EE2E34 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,7 +282,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQCYSNZB89;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/Users/cmsj/hacking/scratch/airplay-research2/airplay-research2/PrivateIncludes/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -252,7 +297,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQCYSNZB89;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/Users/cmsj/hacking/scratch/airplay-research2/airplay-research2/PrivateIncludes/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
